@@ -29,14 +29,13 @@ function makeRow(p,index){
   if(index===2) el.classList.add('top-3');
 
   const gamemodeBadges = Object.entries(p.gamemodes).map(([gm, pts])=>{
-    return `<div class="tier-badge top" title="${gm}">${tierLabel(pts)}</div>`;
+    return `<div class="tier-badge" data-gm="${gm}" title="${gm}">${tierLabel(pts)}</div>`;
   }).join('');
 
   el.innerHTML = `
     <div class="col rank">
       <div class="num ${index<3?'top':''}">${index+1}</div>
     </div>
-
     <div class="col player">
       <div class="player-cell">
         <div class="avatar"><img src="${avatar(p.name)}" alt="${p.name}"></div>
@@ -47,11 +46,9 @@ function makeRow(p,index){
         </div>
       </div>
     </div>
-
     <div class="col region">
       <div class="region-badge">${p.region}</div>
     </div>
-
     <div class="col pts">
       <div class="points">${p.pts}</div>
     </div>
