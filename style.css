@@ -5,7 +5,7 @@
 }
 
 body {
-    background: linear-gradient(135deg, #0f1419 0%, #1a2332 100%);
+    background: #0f1419;
     color: #fff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
@@ -20,12 +20,13 @@ body {
 }
 
 .logo {
-    font-size: 32px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    background: linear-gradient(45deg, #7ed321, #d4a02e);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
 }
 
 .nav {
@@ -335,7 +336,7 @@ body {
 }
 
 .modal-content {
-    background: linear-gradient(135deg, #1a2332 0%, #0f1419 100%);
+    background: #1a2332;
     border-radius: 16px;
     width: 90%;
     max-width: 600px;
