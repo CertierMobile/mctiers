@@ -214,9 +214,18 @@ document.getElementById('copyBtn').addEventListener('click', async () => {
 
 // Search functionality
 document.getElementById('searchInput').addEventListener('input', (e) => {
-    const query = e.target.value.toLowerCase();
-    const items = document.querySelectorAll('.ranking-item');
+    const query = e.target.value.toLowerCase().trim();
     
+    if (!query) {
+        const items = document.querySelectorAll('.ranking-item');
+        items.forEach(item => {
+            item.style.display = 'grid';
+        });
+        return;
+    }
+    
+    // Filter visible items as user types
+    const items = document.querySelectorAll('.ranking-item');
     items.forEach(item => {
         const name = item.querySelector('.player-name').textContent.toLowerCase();
         if (name.includes(query)) {
@@ -225,6 +234,34 @@ document.getElementById('searchInput').addEventListener('input', (e) => {
             item.style.display = 'none';
         }
     });
+});
+
+// Search on Enter key
+document.getElementById('searchInput').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        const query = e.target.value.toLowerCase().trim();
+        
+        if (!query) return;
+        
+        // Find matching player
+        const matchingPlayer = playersData.find(player => 
+            player.name.toLowerCase().includes(query)
+        );
+        
+        if (matchingPlayer) {
+            // Open modal for the matching player
+            openPlayerModal(matchingPlayer);
+            // Clear search
+            e.target.value = '';
+            e.target.blur();
+            
+            // Reset all items to visible
+            const items = document.querySelectorAll('.ranking-item');
+            items.forEach(item => {
+                item.style.display = 'grid';
+            });
+        }
+    }
 });
 
 // Tab switching
@@ -346,4 +383,4 @@ renderRankings();", name: "SMP", high: 60, low: 0 },
             { mode: "uhc", name: "UHC", high: 10, low: 0 },
             { mode: "pot", name: "Pot", high: 0, low: 10 },
             { mode: "vanilla", name: "Vanilla", high: 0, low: 10 },
-            { mode: "smp
+            { mode: "smp", name: "SMP", high: 0, low: 10 },
