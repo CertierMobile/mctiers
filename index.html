@@ -1,48 +1,68 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MCTIERS • Leaderboard</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="theme.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCTiers • Leaderboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="bg-canvas"></div>
-
-  <main class="wrap">
     <header class="header">
-      <div class="logo">MCTIERS</div>
-      <div class="search">
-        <input placeholder="Search player..." id="searchInput" />
-      </div>
+        <div class="logo">MCTIERS</div>
+        <nav class="nav">
+            <div class="nav-item">Home</div>
+            <div class="nav-item active">Rankings</div>
+            <div class="nav-item">Discords</div>
+        </nav>
+        <div class="search-bar">
+            <input type="text" placeholder="Search player...">
+        </div>
     </header>
 
-    <section class="description">
-      <p>The leaderboard displays the top 20 players on the MCTIERS website, ranking players based on their combat performance alongside their Minecraft avatar, region, and tier levels in various categories.</p>
-      <p>Structure: Each row shows a player's rank, avatar, username, combat rank, points, region, and skill tiers. The site features a clean dark theme with purple accents, glassmorphism panels, and a subtle interactive grid background that lights up as you move your cursor.</p>
-    </section>
+    <main class="main">
+        <div class="tabs">
+            <div class="tab active">Overall</div>
+            <div class="tab disabled">LTMs</div>
+            <div class="tab disabled">Vanilla</div>
+            <div class="tab disabled">UHC</div>
+            <div class="tab disabled">Pot</div>
+            <div class="tab disabled">NethOP</div>
+            <div class="tab disabled">SMP</div>
+            <div class="tab disabled">Sword</div>
+            <div class="tab disabled">Axe</div>
+            <div class="tab disabled">Mace</div>
+        </div>
 
-    <section class="leaderboard-card">
-      <div class="card-head">
-        <h2>Leaderboard</h2>
-        <div class="sub">Top 20 players • Competitive Combat Rankings</div>
-      </div>
+        <div class="ranking-table">
+            <div class="player-card" data-player="Marlowww">
+                <div class="rank">1</div>
+                <img src="https://crafatar.com/avatars/00000000000000000000000000000000" alt="Marlowww" class="avatar">
+                <div class="player-info">
+                    <div class="player-name">Marlowww</div>
+                    <div class="player-title">Combat Grandmaster</div>
+                    <div class="player-points">405 points</div>
+                </div>
+                <div class="player-region">NA</div>
+            </div>
 
-      <div class="table-head">
-        <div class="col rank">#</div>
-        <div class="col player">Player & Skills</div>
-        <div class="col region">Region</div>
-        <div class="col pts">Points</div>
-      </div>
+            <div class="player-card" data-player="ItzRealMe">
+                <div class="rank">2</div>
+                <img src="https://crafatar.com/avatars/00000000000000000000000000000001" alt="ItzRealMe" class="avatar">
+                <div class="player-info">
+                    <div class="player-name">ItzRealMe</div>
+                    <div class="player-title">Combat Master</div>
+                    <div class="player-points">330 points</div>
+                </div>
+                <div class="player-region">NA</div>
+            </div>
 
-      <div id="rows" class="rows"></div>
+            <!-- Add the rest similarly -->
+        </div>
+    </main>
 
-      <div class="card-foot">Showing top players with accurate tiers and points</div>
-    </section>
-  </main>
+    <div class="tooltip" id="tooltip"></div>
 
-  <script src="background.js"></script>
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
+
