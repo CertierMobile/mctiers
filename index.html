@@ -3,69 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCTiers • Leaderboard</title>
+    <title>MCTiers - Rankings</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="header">
+    <div class="header">
         <div class="logo">MCTIERS</div>
-        <nav class="nav">
-            <div class="nav-item">Home</div>
-            <div class="nav-item active">Rankings</div>
-            <div class="nav-item">Discords</div>
-        </nav>
-        <div class="search-bar">
-            <input type="text" placeholder="Search player...">
+        <div class="nav">
+            <div class="nav-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                Home
+            </div>
+            <div class="nav-item active">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                    <path d="M4 22h16"></path>
+                    <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                    <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                    <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+                </svg>
+                Rankings
+            </div>
+            <div class="nav-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                Discords ▾
+            </div>
+            <div class="search-box">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input type="text" id="searchInput" placeholder="Search player..." />
+                <span class="shortcut">/</span>
+            </div>
         </div>
-    </header>
+    </div>
 
-    <main class="main">
-        <div class="tabs">
-            <div class="tab active">Overall</div>
-            <div class="tab disabled">LTMs</div>
-            <div class="tab disabled">Vanilla</div>
-            <div class="tab disabled">UHC</div>
-            <div class="tab disabled">Pot</div>
-            <div class="tab disabled">NethOP</div>
-            <div class="tab disabled">SMP</div>
-            <div class="tab disabled">Sword</div>
-            <div class="tab disabled">Axe</div>
-            <div class="tab disabled">Mace</div>
+    <div class="tabs">
+        <div class="tab active" data-mode="overall">
+            <img src="https://mctiers.com/tier_icons/overall.svg" class="tab-icon" alt="Overall">
+            <div class="tab-label">Overall</div>
+        </div>
+        <div class="tab" data-mode="ltms">
+            <img src="https://mctiers.com/tier_icons/2v2.svg" class="tab-icon" alt="LTMS">
+            <div class="tab-label">LTMS</div>
+        </div>
+        <div class="tab" data-mode="vanilla">
+            <img src="https://mctiers.com/tier_icons/vanilla.svg" class="tab-icon" alt="Vanilla">
+            <div class="tab-label">Vanilla</div>
+        </div>
+        <div class="tab" data-mode="uhc">
+            <img src="https://mctiers.com/tier_icons/uhc.svg" class="tab-icon" alt="UHC">
+            <div class="tab-label">UHC</div>
+        </div>
+        <div class="tab" data-mode="pot">
+            <img src="https://mctiers.com/tier_icons/pot.svg" class="tab-icon" alt="Pot">
+            <div class="tab-label">Pot</div>
+        </div>
+        <div class="tab" data-mode="nethop">
+            <img src="https://mctiers.com/tier_icons/nethop.svg" class="tab-icon" alt="NetHOP">
+            <div class="tab-label">NetHOP</div>
+        </div>
+        <div class="tab" data-mode="smp">
+            <img src="https://mctiers.com/tier_icons/smp.svg" class="tab-icon" alt="SMP">
+            <div class="tab-label">SMP</div>
+        </div>
+        <div class="tab" data-mode="sword">
+            <img src="https://mctiers.com/tier_icons/sword.svg" class="tab-icon" alt="Sword">
+            <div class="tab-label">Sword</div>
+        </div>
+        <div class="tab" data-mode="axe">
+            <img src="https://mctiers.com/tier_icons/axe.svg" class="tab-icon" alt="Axe">
+            <div class="tab-label">Axe</div>
+        </div>
+        <div class="tab" data-mode="mace">
+            <img src="https://mctiers.com/tier_icons/mace.svg" class="tab-icon" alt="Mace">
+            <div class="tab-label">Mace</div>
+        </div>
+    </div>
+
+    <div class="server-info">
+        <span style="opacity: 0.6;">ℹ️ Information</span>
+        <span style="font-size: 11px; color: #8b95a5; text-transform: uppercase;">SERVER IP</span>
+        <div class="server-ip">mcpvp.club</div>
+        <button class="copy-btn" id="copyBtn" title="Copy IP">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+        </button>
+    </div>
+
+    <div class="rankings">
+        <div class="ranking-header">
+            <div>#</div>
+            <div>PLAYER</div>
+            <div>REGION</div>
+            <div>TIERS</div>
         </div>
 
-        <div class="ranking-table">
-            <!-- Example Player -->
-            <div class="player-card" 
-                data-player="Marlowww" 
-                data-title="Combat Grandmaster" 
-                data-region="North America" 
-                data-points="405" 
-                data-position="1" 
-                data-tiers="sword,axe,crystal,mace,pot,uhc,nethop,vanilla">
-                <div class="rank">1</div>
-                <img src="https://crafatar.com/avatars/00000000000000000000000000000000" alt="Marlowww" class="avatar">
-                <div class="player-info">
-                    <div class="player-name">Marlowww</div>
-                    <div class="player-title">Combat Grandmaster</div>
-                    <div class="player-points">405 points</div>
+        <div id="rankingsList"></div>
+    </div>
+
+    <!-- Player Detail Modal -->
+    <div id="playerModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModal">✕</button>
+            <div class="modal-header">
+                <div class="player-avatar-large">
+                    <img id="modalAvatar" src="" alt="Avatar">
                 </div>
-                <div class="player-region">NA</div>
+                <h2 id="modalName" class="modal-player-name"></h2>
+                <div id="modalRank" class="modal-rank-badge"></div>
+                <div id="modalRegion" class="modal-region"></div>
+                <div class="namemc-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <rect width="24" height="24" rx="4"></rect>
+                    </svg>
+                    <a href="#" id="nameMCLink" target="_blank">NameMC ↗</a>
+                </div>
             </div>
 
-            <!-- Add more players here -->
-        </div>
-    </main>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>POSITION</h3>
+                    <div class="position-card">
+                        <div class="position-rank" id="modalPosition"></div>
+                        <div class="position-info">
+                            <img src="https://mctiers.com/tier_icons/overall.svg" class="position-icon" alt="Overall">
+                            <span class="position-label">OVERALL</span>
+                            <span id="modalPoints" class="position-points"></span>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- Player Modal -->
-    <div class="modal" id="playerModal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <img src="" alt="Player Avatar" class="modal-avatar" id="modalAvatar">
-            <h2 id="modalName">Player</h2>
-            <div class="modal-title" id="modalTitle">Title</div>
-            <div class="modal-region" id="modalRegion">Region</div>
-            <div class="modal-position" id="modalPosition">1. OVERALL (0 points)</div>
-            <div class="modal-tiers" id="modalTiers"></div>
+                <div class="modal-section">
+                    <h3>TIERS</h3>
+                    <div id="modalTiers" class="modal-tiers"></div>
+                </div>
+            </div>
         </div>
     </div>
 
