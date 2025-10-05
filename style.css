@@ -1,4 +1,4 @@
-/* General Reset */
+/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -11,6 +11,7 @@ body {
     color: #fff;
 }
 
+/* Header */
 .header {
     display: flex;
     align-items: center;
@@ -48,6 +49,7 @@ body {
     color: #fff;
 }
 
+/* Tabs */
 .tabs {
     display: flex;
     gap: 0.5rem;
@@ -69,6 +71,7 @@ body {
     cursor: default;
 }
 
+/* Player Cards */
 .ranking-table {
     padding: 1rem 2rem;
 }
@@ -121,15 +124,85 @@ body {
     font-size: 0.8rem;
 }
 
-/* Tooltip */
-.tooltip {
-    position: absolute;
-    background-color: #2b3448;
-    padding: 0.5rem 1rem;
-    border-radius: 0.4rem;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.2s;
-    color: #fff;
-    font-size: 0.85rem;
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right:0; bottom:0;
+    background-color: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
+
+.modal-content {
+    background-color: #1f2636;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    width: 300px;
+    position: relative;
+}
+
+.modal .close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.modal-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #f6a623;
+    margin-bottom: 1rem;
+}
+
+.modal-title {
+    margin: 0.5rem 0;
+    color: #f6a623;
+    font-weight: bold;
+}
+
+.modal-region {
+    margin-bottom: 1rem;
+    color: #9aa3b1;
+}
+
+.modal-position {
+    background-color: #2b3448;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    margin-bottom: 1rem;
+}
+
+/* Tiers */
+.modal-tiers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    justify-content: center;
+}
+
+.tier {
+    width: 32px;
+    height: 32px;
+    border-radius: 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.tier.purple { background-color: #8e44ad; }
+.tier.green { background-color: #27ae60; }
+.tier.gray { background-color: #7f8c8d; }
+.tier.red { background-color: #e74c3c; }
+.tier.blue { background-color: #2980b9; }
+.tier.violet { background-color: #9b59b6; }
+
