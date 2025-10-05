@@ -1,9 +1,4 @@
-// subtle moving grid + parallax tilt on mouse move (background only)
-// creates an animated feeling without heavy CPU usage
-
 const bg = document.getElementById('bg-canvas');
-
-// create a canvas overlay for a soft moving grid
 const canvas = document.createElement('canvas');
 canvas.style.position = 'absolute';
 canvas.style.inset = '0';
@@ -12,9 +7,9 @@ canvas.style.height = '100%';
 canvas.style.zIndex = '-3';
 canvas.style.pointerEvents = 'none';
 bg.appendChild(canvas);
-
 const ctx = canvas.getContext('2d');
-let w=0,h=0,device=1,offset=0;
+
+let w=0,h=0,device=1;
 function resize(){
   device = window.devicePixelRatio || 1;
   w = canvas.width = Math.floor(canvas.clientWidth * device);
@@ -23,48 +18,50 @@ function resize(){
 resize();
 window.addEventListener('resize', resize);
 
+let mouseX=0,mouseY=0;
+window.addEventListener('mousemove', e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
 function drawGrid(t){
   ctx.clearRect(0,0,w,h);
   ctx.save();
-  ctx.scale(device, device);
-
+  ctx.scale(device,device);
   const gap = 48;
-  ctx.globalAlpha = 0.06;
-  ctx.strokeStyle = '#ffffff';
-  ctx.lineWidth = 1;
-
-  // moving offset for subtle motion
-  offset = (t * 0.01) % gap;
-  for(let x = -gap; x < (w/device)+gap; x += gap){
-    ctx.beginPath();
-    ctx.moveTo(x + offset, -gap);
-    ctx.lineTo(x + offset, (h/device)+gap);
-    ctx.stroke();
+  for(let x=-gap;x<(w/device)+gap;x+=gap){
+    for(let y=-gap;y<(h/device)+gap;y+=gap){
+      let dx = mouseX - x;
+      let dy = mouseY - y;
+      let dist = Math.sqrt(dx*dx + dy*dy);
+      let alpha = Math.max(0.02, 0.06 - dist*0.001);
+      ctx.strokeStyle = `rgba(165,108,255,${alpha})`;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(x,0);
+      ctx.lineTo(x,h/device);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(0,y);
+      ctx.lineTo(w/device,y);
+      ctx.stroke();
+    }
   }
-  for(let y = -gap; y < (h/device)+gap; y += gap){
-    ctx.beginPath();
-    ctx.moveTo(-gap, y + offset);
-    ctx.lineTo((w/device)+gap, y + offset);
-    ctx.stroke();
-  }
-
   ctx.restore();
 }
 
 let last = 0;
 function loop(ts){
   drawGrid(ts/10);
-  last = ts;
+  last=ts;
   requestAnimationFrame(loop);
 }
 requestAnimationFrame(loop);
 
-// slight parallax effect by translating the bg element on mouse move (subtle)
-let mouseX = 0, mouseY = 0;
+// subtle parallax
+bg.style.transition = 'transform 0.12s linear';
 window.addEventListener('mousemove', (e)=>{
-  mouseX = (e.clientX / window.innerWidth) - 0.5;
-  mouseY = (e.clientY / window.innerHeight) - 0.5;
-  const tx = mouseX * 18;
-  const ty = mouseY * 12;
-  bg.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+  const tx = (e.clientX / window.innerWidth - 0.5)*18;
+  const ty = (e.clientY / window.innerHeight - 0.5)*12;
+  bg.style.transform = `translate3d(${tx}px,${ty}px,0)`;
 });
