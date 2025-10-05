@@ -1,18 +1,41 @@
-const tooltip = document.getElementById('tooltip');
+const modal = document.getElementById('playerModal');
+const modalAvatar = document.getElementById('modalAvatar');
+const modalName = document.getElementById('modalName');
+const modalTitle = document.getElementById('modalTitle');
+const modalRegion = document.getElementById('modalRegion');
+const modalPosition = document.getElementById('modalPosition');
+const modalTiers = document.getElementById('modalTiers');
+const closeBtn = document.querySelector('.close');
+
 const cards = document.querySelectorAll('.player-card');
 
 cards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-        tooltip.style.left = e.pageX + 15 + 'px';
-        tooltip.style.top = e.pageY + 15 + 'px';
-        tooltip.innerHTML = `
-            <strong>${card.dataset.player}</strong><br>
-            Player details here
-        `;
-        tooltip.style.opacity = 1;
-    });
+    card.addEventListener('click', () => {
+        modalAvatar.src = card.querySelector('.avatar').src;
+        modalName.textContent = card.dataset.player;
+        modalTitle.textContent = card.dataset.title;
+        modalRegion.textContent = card.dataset.region;
+        modalPosition.textContent = `${card.dataset.position}. OVERALL (${card.dataset.points} points)`;
 
-    card.addEventListener('mouseleave', () => {
-        tooltip.style.opacity = 0;
+        // Clear previous tiers
+        modalTiers.innerHTML = '';
+        const tiers = card.dataset.tiers.split(',');
+        tiers.forEach(color => {
+            const div = document.createElement('div');
+            div.classList.add('tier', color.trim());
+            div.textContent = color.trim().toUpperCase();
+            modalTiers.appendChild(div);
+        });
+
+        modal.style.display = 'flex';
     });
+});
+
+// Close modal
+closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
+
+window.addEventListener('click', (e) => {
+    if (e.target === modal) modal.style.display = 'none';
 });
