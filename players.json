@@ -1,0 +1,41 @@
+[
+  {
+    "name": "Marlowww",
+    "region": "EU",
+    "pts": 60,
+    "gamemodes": {
+      "sword": 60,
+      "axe": 55,
+      "mace": 50,
+      "crystal": 48,
+      "nethop": 45,
+      "smp": 58
+    }
+  },
+  {
+    "name": "ItzRealMe",
+    "region": "NA",
+    "pts": 55,
+    "gamemodes": {
+      "sword": 50,
+      "axe": 52,
+      "mace": 48,
+      "crystal": 46,
+      "nethop": 42,
+      "smp": 54
+    }
+  },
+  {
+    "name": "Swight",
+    "region": "EU",
+    "pts": 50,
+    "gamemodes": {
+      "sword": 48,
+      "axe": 47,
+      "mace": 44,
+      "crystal": 42,
+      "nethop": 40,
+      "smp": 48
+    }
+  }
+]
