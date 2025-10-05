@@ -34,7 +34,8 @@
         </div>
 
         <div class="ranking-table">
-            <div class="player-card" data-player="Marlowww">
+            <!-- Example Player -->
+            <div class="player-card" data-player="Marlowww" data-title="Combat Grandmaster" data-region="North America" data-points="405" data-position="1" data-tiers="purple,green,gray,red,blue,violet,red,gray">
                 <div class="rank">1</div>
                 <img src="https://crafatar.com/avatars/00000000000000000000000000000000" alt="Marlowww" class="avatar">
                 <div class="player-info">
@@ -45,24 +46,23 @@
                 <div class="player-region">NA</div>
             </div>
 
-            <div class="player-card" data-player="ItzRealMe">
-                <div class="rank">2</div>
-                <img src="https://crafatar.com/avatars/00000000000000000000000000000001" alt="ItzRealMe" class="avatar">
-                <div class="player-info">
-                    <div class="player-name">ItzRealMe</div>
-                    <div class="player-title">Combat Master</div>
-                    <div class="player-points">330 points</div>
-                </div>
-                <div class="player-region">NA</div>
-            </div>
-
-            <!-- Add the rest similarly -->
+            <!-- Add more players here -->
         </div>
     </main>
 
-    <div class="tooltip" id="tooltip"></div>
+    <!-- Player Modal -->
+    <div class="modal" id="playerModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img src="" alt="Player Avatar" class="modal-avatar" id="modalAvatar">
+            <h2 id="modalName">Player</h2>
+            <div class="modal-title" id="modalTitle">Title</div>
+            <div class="modal-region" id="modalRegion">Region</div>
+            <div class="modal-position" id="modalPosition">1. OVERALL (0 points)</div>
+            <div class="modal-tiers" id="modalTiers"></div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-
