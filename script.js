@@ -230,8 +230,33 @@ document.getElementById('searchInput').addEventListener('input', (e) => {
 // Tab switching
 document.querySelectorAll('.tab').forEach(tab => {
     tab.addEventListener('click', () => {
+        const mode = tab.dataset.mode;
+        
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
+        
+        const rankingsList = document.getElementById('rankingsList');
+        const rankingHeader = document.querySelector('.ranking-header');
+        
+        if (mode === 'overall') {
+            rankingHeader.style.display = 'grid';
+            renderRankings();
+        } else {
+            rankingHeader.style.display = 'none';
+            rankingsList.innerHTML = `
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 400px; text-align: center; padding: 40px;">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#8b95a5" stroke-width="1.5" style="margin-bottom: 30px;">
+                        <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+                        <line x1="16" y1="8" x2="2" y2="22"></line>
+                        <line x1="17.5" y1="15" x2="9" y2="15"></line>
+                    </svg>
+                    <h2 style="font-size: 32px; margin-bottom: 20px; color: #fff;">This isn't operational yet!</h2>
+                    <p style="font-size: 16px; color: #8b95a5; max-width: 600px; line-height: 1.6;">
+                        We're currently working on implementing this ranking system, which will include individual leaderboards for various game modes. However, a few other features will take priority first.
+                    </p>
+                </div>
+            `;
+        }
     });
 });
 
