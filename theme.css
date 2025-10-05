@@ -1,0 +1,26 @@
+/* theme-level glow + subtle animated accents */
+
+#bg-canvas{
+  position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background: radial-gradient(1200px circle at 10% 10%, rgba(123,59,255,0.06), transparent 6%),
+              radial-gradient(1000px circle at 90% 90%, rgba(165,108,255,0.05), transparent 6%);
+  transition: transform .12s linear;
+}
+
+/* small animated purple highlight behind the card */
+.leaderboard-card::before{
+  content:"";position:absolute;inset:-2px;background:linear-gradient(135deg, rgba(165,108,255,0.06), rgba(123,59,255,0.04));filter:blur(40px);opacity:0.9;border-radius:calc(var(--card-radius)+2px);z-index:-1;pointer-events:none
+}
+
+/* accent for top 3 */
+.row.top-1 .num{background:linear-gradient(90deg,#ffd26a, #ff9f6a);color:#1b0b00}
+.row.top-2 .num{background:linear-gradient(90deg,#d3d3d3,#b8b8b8);color:#0b0b0b}
+.row.top-3 .num{background:linear-gradient(90deg,#c7a17e,#b58a5a);color:#0b0b0b}
+
+/* animated glow for top tier badges */
+@keyframes pulse {
+  0%{ box-shadow:0 0 0 rgba(165,108,255,0.12) }
+  50%{ box-shadow:0 0 18px rgba(165,108,255,0.12) }
+  100%{ box-shadow:0 0 0 rgba(165,108,255,0.12) }
+}
+.tier-badge.top{animation:pulse 2.6s infinite ease-in-out;}
