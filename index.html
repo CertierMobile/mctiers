@@ -3,56 +3,44 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Rankings • SWORD • AXE</title>
+  <title>MCTIERS • Leaderboard</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
-  <div class="bg-grid"></div>
+  <div id="bg-canvas"></div>
 
-  <header class="topbar">
-    <div class="brand">MCTiers • Demo</div>
-    <nav class="nav">
-      <a href="#rankings">Rankings</a>
-      <a href="#sword">Sword</a>
-      <a href="#axe">Axe</a>
-    </nav>
-  </header>
-
-  <main class="container">
-    <!-- Left: SWORD -->
-    <aside id="sword" class="col sword-col">
-      <div class="panel">
-        <div class="panel-head">
-          <img class="icon" src="https://images.pexels.com/photos/267508/pexels-photo-267508.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&dpr=1" alt="sword">
-          SWORD 🗡️
-        </div>
-        <div class="tiers" id="sword-tiers"></div>
+  <main class="wrap">
+    <header class="header">
+      <div class="logo">MCTIERS</div>
+      <div class="search">
+        <input placeholder="Search player..." id="searchInput" />
       </div>
-    </aside>
+    </header>
 
-    <!-- Middle: RANKINGS -->
-    <section id="rankings" class="col rankings-col">
-      <div class="panel">
-        <div class="panel-head">
-          <img class="trophy" src="https://pngimg.com/uploads/trophy/trophy_PNG84.png" alt="trophy">
-          RANKINGS 🏆
-        </div>
-        <div class="rankings-list" id="rankings-list"></div>
+    <section class="leaderboard-card">
+      <div class="card-head">
+        <h2>Leaderboard</h2>
+        <div class="sub">Top 20 players • Competitive Combat Rankings</div>
       </div>
+
+      <div class="table-head">
+        <div class="col rank">#</div>
+        <div class="col player">Player</div>
+        <div class="col region">Region</div>
+        <div class="col tiers">Tiers</div>
+        <div class="col pts">Points</div>
+      </div>
+
+      <div id="rows" class="rows">
+        <!-- JS will inject rows here -->
+      </div>
+
+      <div class="card-foot">Showing 20 players — placeholder avatars used</div>
     </section>
-
-    <!-- Right: AXE -->
-    <aside id="axe" class="col axe-col">
-      <div class="panel">
-        <div class="panel-head">
-          <img class="icon" src="https://pngimg.com/uploads/axe/axe_PNG1461.png" alt="axe">
-          AXE 🪓
-        </div>
-        <div class="tiers" id="axe-tiers"></div>
-      </div>
-    </aside>
   </main>
 
+  <script src="background.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
